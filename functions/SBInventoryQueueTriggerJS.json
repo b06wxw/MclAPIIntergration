@@ -1,0 +1,20 @@
+{
+  "bindings": [
+    {
+      "name": "mySbMsg",
+      "type": "serviceBusTrigger",
+      "direction": "in",
+      "queueName": "inventory",
+      "connection": "mcpocsvcbus",
+      "accessRights": "Manage"
+    },
+    {
+      "type": "blob",
+      "name": "outputBlob",
+      "path": "inventory/{rand-guid}",
+      "connection": "mcpocstorage_STORAGE",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}

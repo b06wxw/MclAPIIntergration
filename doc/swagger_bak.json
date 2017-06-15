@@ -1,0 +1,218 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "azure-mcpoc-final",
+    "description": "Macys China Proof-of-Concept"
+  },
+  "host": "mcpocweb.azurewebsites.net",
+  "basePath": "/",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+
+    "/ping": {
+      "get": {
+        "description": "Returns the current timestamp on the server",
+        "operationId": "ping",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "ping response",
+            "schema": {
+              "$ref": "#/definitions/PingResponse"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/build": {
+      "get": {
+        "description": "Returns the application build timestamp",
+        "operationId": "build",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "build response",
+            "schema": {
+              "$ref": "#/definitions/BuildResponse"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/orders/queue_info": {
+      "get": {
+        "description": "Returns name and current depth of the output ServiceBus queue",
+        "operationId": "queue_info",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "queue info response",
+            "schema": {
+              "$ref": "#/definitions/QueueInfoResponse"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/orders/update": {
+      "post": {
+        "description": "Post a new, updated, or deleted order",
+        "operationId": "update",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "order",
+            "in": "body",
+            "description": "The Order to be processed.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "queue info response",
+            "schema": {
+              "$ref": "#/definitions/OrderUpdateResponse"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "definitions": {
+
+    "Order": {
+      "type": "object",
+      "required": [
+        "order"
+      ],
+      "properties": {
+        "order": {
+          "type": "object"
+        }
+      }
+    },
+
+    "OrderUpdateResponse": {
+      "type": "object",
+      "required": [
+        "received"
+      ],
+      "properties": {
+        "received": {
+          "type": "boolean"
+        }
+      }
+    },
+
+    "PingResponse": {
+      "type": "object",
+      "required": [
+        "date"
+      ],
+      "properties": {
+        "date": {
+          "type": "string"
+        }
+      }
+    },
+
+    "BuildResponse": {
+      "type": "object",
+      "required": [
+        "build_timestamp"
+      ],
+      "properties": {
+        "build_timestamp": {
+          "type": "string"
+        }
+      }
+    },
+
+    "QueueInfoResponse": {
+      "type": "object",
+      "required": [
+        "name",
+        "depth",
+        "status"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "depth": {
+          "type": "number"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+
+    "ErrorResponse": {
+      "type": "object",
+      "required": [
+        "code",
+        "message"
+      ],
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+
+  }
+}

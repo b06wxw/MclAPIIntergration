@@ -1,0 +1,45 @@
+{
+    "type": "get_queue_info",
+    "error": null,
+    "queue": {
+        "LockDuration": "PT30S",
+        "MaxSizeInMegabytes": "16384",
+        "RequiresDuplicateDetection": "false",
+        "RequiresSession": "false",
+        "DefaultMessageTimeToLive": "PT1H",
+        "DeadLetteringOnMessageExpiration": "false",
+        "DuplicateDetectionHistoryTimeWindow": "PT30S",
+        "MaxDeliveryCount": "10",
+        "EnableBatchedOperations": "true",
+        "SizeInBytes": "0",
+        "MessageCount": "0",
+        "IsAnonymousAccessible": "false",
+        "AuthorizationRules": "",
+        "Status": "Active",
+        "CreatedAt": "2017-03-23T21:52:33.063Z",
+        "UpdatedAt": "2017-03-23T21:53:00.463Z",
+        "AccessedAt": "2017-03-24T12:09:16.4884823Z",
+        "SupportOrdering": "false",
+        "CountDetails": {
+            "d2p1:ActiveMessageCount": "0",
+            "d2p1:DeadLetterMessageCount": "0",
+            "d2p1:ScheduledMessageCount": "0",
+            "d2p1:TransferMessageCount": "0",
+            "d2p1:TransferDeadLetterMessageCount": "0"
+        },
+        "AutoDeleteOnIdle": "P10675199DT2H48M5.4775807S",
+        "EntityAvailabilityStatus": "Available",
+        "_": {
+            "ContentRootElement": "QueueDescription",
+            "id": "https://cjoakimservicebus.servicebus.windows.net/orders?api-version=2013-07",
+            "title": "orders",
+            "published": "2017-03-23T21:52:33Z",
+            "updated": "2017-03-23T21:53:00Z",
+            "author": {
+                "name": "cjoakimservicebus"
+            },
+            "link": ""
+        },
+        "QueueName": "orders"
+    }
+}

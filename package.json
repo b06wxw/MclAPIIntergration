@@ -1,0 +1,29 @@
+{
+  "name": "azure-mcpoc",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Macys-China POC Web App built with Node.js and the Express web framework.",
+  "keywords": [],
+  "author": "Chris Joakim, Ben Zadeh",
+  "license": "",
+  "main": "app.js",
+  "dependencies": {
+    "azure": "1.2.0-preview",
+    "express": "^4.13.3",
+    "serve-favicon": "^2.3.0",
+    "morgan": "^1.6.1",
+    "cookie-parser": "^1.3.3",
+    "body-parser": "^1.13.3",
+    "jade": "^1.11.0"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-develop": "^0.4.0",
+    "grunt-contrib-stylus": "^1.0.0",
+    "request": "^2.60.0",
+    "load-grunt-tasks": "^3.2.0"
+  },
+  "scripts": {
+    "start": "node ./bin/www"
+  }
+}

@@ -1,0 +1,277 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "0.2.0",
+    "title": "azure-mcpoc",
+    "description": "Macys China Proof-of-Concept"
+  },
+  "host": "mcpocweb.azurewebsites.net",
+  "basePath": "/",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+
+    "/admin/ping": {
+      "get": {
+        "description": "Returns the current timestamp on the server",
+        "operationId": "ping",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "ping response",
+            "schema": {
+              "$ref": "#/definitions/PingResponse"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/admin/build": {
+      "get": {
+        "description": "Returns the application build timestamp",
+        "operationId": "build",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "build response",
+            "schema": {
+              "$ref": "#/definitions/BuildResponse"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/admin/queue_info": {
+      "get": {
+        "description": "Returns name and current depth of the output ServiceBus queue",
+        "operationId": "queue_info",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "queue info response",
+            "schema": {
+              "$ref": "#/definitions/QueueInfoResponse"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/orders/collect": {
+      "post": {
+        "description": "Receive an Order",
+        "operationId": "collect",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "order",
+            "in": "body",
+            "description": "The Order",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NewOrderRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "queue info response",
+            "schema": {
+              "$ref": "#/definitions/NewOrderResponse"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/orders/update": {
+      "post": {
+        "description": "Update an Order",
+        "operationId": "update",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "order",
+            "in": "body",
+            "description": "The Order to be processed.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdatedOrderRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "queue info response",
+            "schema": {
+              "$ref": "#/definitions/UpdatedOrderResponse"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "definitions": {
+
+    "NewOrderRequest": {
+      "type": "object",
+      "required": [
+        "order"
+      ],
+      "properties": {
+        "order": {
+          "type": "object"
+        }
+      }
+    },
+
+    "NewOrderResponse": {
+      "type": "object",
+      "required": [
+        "received"
+      ],
+      "properties": {
+        "received": {
+          "type": "boolean"
+        }
+      }
+    },
+
+    "UpdatedOrderRequest": {
+      "type": "object",
+      "required": [
+        "order"
+      ],
+      "properties": {
+        "order": {
+          "type": "object"
+        }
+      }
+    },
+
+    "UpdatedOrderResponse": {
+      "type": "object",
+      "required": [
+        "received"
+      ],
+      "properties": {
+        "received": {
+          "type": "boolean"
+        }
+      }
+    },
+
+    "PingResponse": {
+      "type": "object",
+      "required": [
+        "date"
+      ],
+      "properties": {
+        "date": {
+          "type": "string"
+        }
+      }
+    },
+
+    "BuildResponse": {
+      "type": "object",
+      "required": [
+        "build_timestamp"
+      ],
+      "properties": {
+        "build_timestamp": {
+          "type": "string"
+        }
+      }
+    },
+
+    "QueueInfoResponse": {
+      "type": "object",
+      "required": [
+        "name",
+        "depth",
+        "status"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "depth": {
+          "type": "number"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+
+    "ErrorResponse": {
+      "type": "object",
+      "required": [
+        "code",
+        "message"
+      ],
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+
+  }
+}

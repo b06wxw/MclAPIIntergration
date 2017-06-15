@@ -1,0 +1,38 @@
+ {
+  "order": {
+    "header": {
+      "referringId": 42,
+      "partnerOrderId": "xxx",
+      "clientId": "MCL",
+      "subclientId": "TMALL",
+ 
+      "State": "CREATED"
+    },
+    "shipmentList": [{
+      "partnerShipmentId": 1,
+      "mkpPartnerId": "TMALL",
+      "shippingContact": {
+        "name": {
+          "firstName": "Macys",
+          "lastName": "Limited"
+        },
+        "address": {
+          "line1": "655 Rivermond Road",
+          "city": "Atlanta",
+          "state": "CA",
+          "zipCode": 30445,
+          "country": "USA"
+        }
+      },
+      "lineItemList": [{
+        "partnerLineId": 1,
+        "upc": 31458916,
+        "quantity": 42,
+        "unitPrice": {
+          "price": 25.00,
+          "currencyName": "USD"
+        }
+      }]
+    }]
+  }
+}
