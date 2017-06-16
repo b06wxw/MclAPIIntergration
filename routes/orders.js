@@ -45,7 +45,11 @@ router.post('/update', function(req, res) {
         return res.json({received: true, body: body});
       }
     });
-    svcbus_util.send_message_to_queue(jstr, 'ordersupdate');
+    // Wangshui Wei, use the default in servicetuil which is configured via enviorment valirable
+    //or app setting
+    //hard coded for now
+    //svcbus_util.send_message_to_queue(jstr, 'orderstatusmessagequeue');
+    svcbus_util.send_message_to_queue(jstr, '');
 });
 
 module.exports = router;
