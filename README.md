@@ -1,6 +1,6 @@
 # azure-mcpoc
 
-Macys China Proof-of-Concept
+Macys China Proof-of-Concept, the POC becomes a backbone for July 2017 release
 
 This repository is intended to be deployed as a Node.js Azure Web App,
 but other files related to this POC are also stored here.
