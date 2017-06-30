@@ -38,6 +38,8 @@ router.post('/update', function(req, res) {
     svcbus_util.on('done', function(evt_obj) {
       console.log(evt_obj);
       if (evt_obj['error']) {
+        //Need to log the error
+        console.error(" error when writing to bus " + jstr);
         res.status(400);
         return res.send({received: false});
       }
