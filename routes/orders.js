@@ -53,6 +53,7 @@ router.post('/update', function(req, res) {
     var jstr = JSON.stringify(body);
 
 
+
     //logger_util.log(logger_util.log_info, jstr);
     //to test log function, will change back to log_info
     logger_util.log(logger_util.log_fatal, jstr);
