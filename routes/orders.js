@@ -69,7 +69,7 @@ router.post('/update', function(req, res) {
       }
     });
     // Wangshui Wei, use the default in servicetuil which is configured via enviorment valirable
-    //or app setting
+    //or app setting, this needs to be improved
     svcbus_util.send_message_to_queue(jstr, '');
 });
 
