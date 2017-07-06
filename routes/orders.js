@@ -54,14 +54,12 @@ router.post('/update', function(req, res) {
 
 
 
-    //logger_util.log(logger_util.log_info, jstr);
-    //to test log function, will change back to log_info
-    logger_util.log(logger_util.log_fatal, jstr);
- 
+     logger_util.log(logger_util.log_info, jstr);
+    
     var svcbus_util = new SvcBusUtil();
     svcbus_util.on('done', function(evt_obj) {
       if (evt_obj['error']) {
-        //Need to log the error
+        //Need to log the error  
         logger_util.log(logger_util.log_error, jstr);
         res.status(400);
         return res.send({received: false});
