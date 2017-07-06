@@ -34,6 +34,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/',          index_router);
+app.use('/logging/eventhub',   index_router);
 app.use('/admin',     admin_router);
 app.use('/home',      index_router);
 app.use('/index',     index_router);
